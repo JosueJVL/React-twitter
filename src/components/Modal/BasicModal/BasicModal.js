@@ -17,7 +17,7 @@ export default function BasicaModal(props) {
                 <Modal.Title>
                     <img src={LogoWhite} alt="Twitter"></img>
                 </Modal.Title>
-            </Modal.Header>
+            </Modal.Header> 
             <Modal.Body>{children}</Modal.Body>
         </Modal>
     )
