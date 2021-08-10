@@ -1,22 +1,44 @@
-import React, { useState } from 'react';
+import React, { isValidElement, useState } from 'react';
 import { Row, Col, Form, Button, Spinner } from "react-bootstrap";
+import { values, size } from "lodash";
+import { toast } from "react-toastify";
+import { isEmailValid } from '../../utils/validation';
 
 import "./SignUpForm.scss";
 
 export default function SignUpForm(props) {
     const { setShowModal } = props;
-
     const [formData, setFormData] = useState(initialFormValue)
 
     const onSubmit = e => {
         e.preventDefault();
         console.log(formData)
+
+        let validCount = 0;
+
+        values(formData).some(value => {
+            value && validCount ++
+            return null });
+
+        if(validCount !== size(formData)){
+            toast.warning("Completa todos los campos del formulario")
+        }else{
+            if (!isEmailValid(formData.email)){
+                toast.warning("Email no es valido");
+            }else if(formData.password !== formData.confirmPassword){
+                toast.warning("Las constraseñas deben de ser iguales.")
+            }else if(size(formData.password) < 6){
+                toast.warning("La constraseña debe de tener al menos 6 caracteres")
+            }else{
+                toast.success("Ok")
+            }
+        }
     };
 
     //Solo sirve para formularios que estan construidos con puros input
     const onChange = e => {
         setFormData({ ...formData, [e.target.name] : e.target.value})
-    }
+    };
 
     return (
         <div className="sign-up-form">
