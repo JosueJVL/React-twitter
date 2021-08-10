@@ -1,21 +1,36 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Container, Row, Col, Button} from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faUser, faComment  } from '@fortawesome/free-solid-svg-icons';
+import BasicModal from "../../components/Modal/BasicModal";
+import SignUpForm from "../../components/SignUpForm";
 import LogoWhite from "../../assets/png/logo-white.png";
 import LogoTwitter from "../../assets/png/logo.png";
 
 import "./SignInSingUp.scss"
 
 export default function SignInSingUp() {
+
+    const [showModal, setShowModal] = useState(false);
+    const [contentModal, setContentModal ] = useState(null);
+
+    const openModal = contentModal => {
+        setShowModal(true);
+        setContentModal(contentModal)
+    }
+
     return (
         <>
         <Container className="signin-signup" fluid>
             <Row>
                 <LeftComponent/>
-                <RightComponent />
+                <RightComponent openModal = {openModal} setShowModal = {setShowModal} />
             </Row>
         </Container>
+        
+        <BasicModal show={showModal} setShow={setShowModal}>
+            {contentModal}
+        </BasicModal>
         </>
     )
 }
@@ -41,15 +56,28 @@ function LeftComponent(){
     )
 }
 
-function RightComponent(){
+function RightComponent(props){
+    const { openModal, setShowModal } = props;
     return (
         <Col className="signin-signup__right" xs={6}>
             <div>
                 <img src={LogoWhite} alt="Twitter" />
                 <h2>Mira lo que esta pasando en el Mundo</h2>
                 <h3>Unete a Twitter ahora !</h3>
-                <Button variant="primary">Registrate</Button>
-                <Button variant="outline-primary">Iniciar Sesion</Button>
+                <Button 
+                    variant="primary"
+                    onClick = {() => openModal(
+                        <SignUpForm setShowModal={setShowModal}></SignUpForm>
+                    )}
+                >
+                    Registrate
+                </Button>
+                <Button 
+                    variant="outline-primary"
+                    onClick = {() => openModal(
+                        <h2>Formularion de Login</h2>
+                    )}
+                    >Iniciar Sesion</Button>
             </div>
         </Col>
     )

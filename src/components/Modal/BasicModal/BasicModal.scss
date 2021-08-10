@@ -1,0 +1,25 @@
+@import "../../../scss/idex.scss";
+
+.basic-modal{
+    .modal-content{
+        background-color: $background-grey-dark;
+        border: 0;
+
+        .modal-header{
+            padding: 15px;
+            border: 0;
+
+            .modal-title{
+                margin: 0 auto;
+
+                img{
+                    width: 40px;
+                }
+            }
+        }
+
+        .modal-body{
+            padding: 20px 40px 40px 40px;
+        }
+    }
+}
