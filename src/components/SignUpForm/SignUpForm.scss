@@ -5,15 +5,15 @@
       font-weight: bold;
       padding-bottom: 30px;
     }
-  
-    .form-group {
-      padding-bottom: 20px;
-  
+
+
       input {
-        font-size: 25px;
+        font-size: 20px;
+        padding: auto;
+        margin-bottom: 20px;
       }
-    }
-  
+
+
     button {
       width: 100%;
       font-size: 20px;
@@ -21,10 +21,19 @@
       padding: 15px;
       border-radius: 50px;
       margin-top: 20px;
-  
+
       .spinner-border {
         width: 25px;
         height: 25px;
       }
     }
 }
+
+// .form-group{
+//   background-color: red;
+//   padding-bottom: 20px;
+
+//   .input{
+//     font-size: 50px;
+//   }
+// }
