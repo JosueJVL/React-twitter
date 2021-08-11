@@ -32,3 +32,35 @@ export function signUpApi(user){
     })
 
 }
+
+export function signInAPI(user){
+    const url = `${API_HOST}/login`;
+
+    const userTmp = {
+        ...user,
+        email: user.email.toLowerCase()
+    }
+
+    const params = {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(userTmp)
+    };
+
+    return fetch(url, params).then(response=>{
+        if(response.status >= 200 && response.status < 300){
+            return response.json();
+        }
+        
+        return { message: "Usuario y/o Contrasena invalidos"}
+    })
+    .then(result => {
+        return result;
+    })
+    .catch(error => {
+        return error;
+    });
+
+}

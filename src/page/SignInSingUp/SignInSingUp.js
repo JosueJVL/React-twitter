@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { Container, Row, Col, Button} from "react-bootstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faSearch, faUser, faComment  } from '@fortawesome/free-solid-svg-icons';
+//import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+//import { faSearch, faUser, faComment  } from '@fortawesome/free-solid-svg-icons';
 import BasicModal from "../../components/Modal/BasicModal";
 import SignUpForm from "../../components/SignUpForm";
 import SignInForm from "../../components/SignInForm";
