@@ -92,7 +92,6 @@ export function isUserLogedApi(){
         logoutApi();
     }
     
-    console.log(jwtDecode(token));
     return jwtDecode(token);
     
 }

@@ -7,9 +7,10 @@ import  { signInAPI, setTokenAPI } from '../../api/auth';
 
 import "./SignInForm.scss"
 
-export default function SignInForm() {
+export default function SignInForm(props) {
     const [formData, setFormData] = useState(initialFormValue)
     const [stateInLoading, setStateInLoading] = useState(false)
+    const {setRefreshCheckLogin} = props;
 
     const onSubmit = e => {
         e.preventDefault()
@@ -32,7 +33,7 @@ export default function SignInForm() {
                     if(response.message){
                         toast.warning(response.message);
                     }else{
-                        toast.success("ok")
+                        setRefreshCheckLogin(true);
                         setTokenAPI(response.token);
                     }
                 })

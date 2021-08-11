@@ -8,17 +8,29 @@ export default function App() {
 
   // con las llaves {} da entender que se a iniciado el objet de User
   const [user, setUser]  = useState(null);
+  //estado 
+  const [loadUser, setLoadUser] = useState(false);
+
+  const [refreshCheckLogin, setRefreshCheckLogin] = useState(false)
 
   useEffect(() =>{
-    setUser(isUserLogedApi())
-  }, []);
+    setUser(isUserLogedApi());
+    setLoadUser(true);
+    setRefreshCheckLogin(false)
+  }, [refreshCheckLogin]);
+
+  if(!loadUser){
+    return null;
+  }
+
+  
 
   return (
     <AuthContext.Provider value={user}>
       {
         !user ?
         <div>
-          <SignInSingUp/>
+          <SignInSingUp setRefreshCheckLogin={setRefreshCheckLogin}/>
         </div> :
         <h1>
           estas logeado
