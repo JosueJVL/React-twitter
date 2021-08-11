@@ -3,7 +3,7 @@ import { Form, Button, Spinner } from "react-bootstrap";
 import { isEmailValid } from '../../utils/validation';
 import { values, size } from "lodash";
 import { toast } from "react-toastify";
-import  { signInAPI } from '../../api/auth';
+import  { signInAPI, setTokenAPI } from '../../api/auth';
 
 import "./SignInForm.scss"
 
@@ -13,7 +13,6 @@ export default function SignInForm() {
 
     const onSubmit = e => {
         e.preventDefault()
-        console.log(formData);
 
         let validCount = 0;
 
@@ -34,7 +33,7 @@ export default function SignInForm() {
                         toast.warning(response.message);
                     }else{
                         toast.success("ok")
-                        console.log(response.token);
+                        setTokenAPI(response.token);
                     }
                 })
                 .catch(() => {

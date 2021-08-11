@@ -1,4 +1,5 @@
-import { API_HOST } from "../utils/constant";
+import { API_HOST, Token } from "../utils/constant";
+import jwtDecode from "jwt-decode";
 
 export function signUpApi(user){
     const url = `${API_HOST}/registro`;
@@ -63,4 +64,46 @@ export function signInAPI(user){
         return error;
     });
 
+}
+
+export function setTokenAPI(token){
+    localStorage.setItem(Token, token);
+}
+
+export function getTokenApi(){
+    return localStorage.getItem(Token);
+}
+
+export function logoutApi(){
+    localStorage.removeItem(Token);
+}
+
+export function isUserLogedApi(){
+    const token = getTokenApi();
+
+    if(!token){
+        logoutApi();
+        return null
+    }
+    // se ocupa el npm add jwt-decode
+    // para validar el token si esta vigente
+    
+    if(isExpired(token)){
+        logoutApi();
+    }
+    
+    console.log(jwtDecode(token));
+    return jwtDecode(token);
+    
+}
+
+function isExpired(token) {
+    const { exp } = jwtDecode(token);
+    const expire = exp * 1000;
+    const timeout = expire - Date.now();
+  
+    if (timeout < 0) {
+      return true;
+    }
+    return false;
 }

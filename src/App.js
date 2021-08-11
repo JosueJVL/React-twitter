@@ -1,33 +1,41 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SignInSingUp from "./page/SignInSingUp";
 import { ToastContainer } from "react-toastify";
+import { AuthContext } from "./utils/context";
+import {isUserLogedApi} from "./api/auth";
 
 export default function App() {
 
-  const [user, setUser]  = useState({});
+  // con las llaves {} da entender que se a iniciado el objet de User
+  const [user, setUser]  = useState(null);
 
-  return <div>
-    {
-      user ?
-      <div>
-        <SignInSingUp/>
-      </div> :
-      <h1>
-        No estas logeado
-      </h1>
-    }
+  useEffect(() =>{
+    setUser(isUserLogedApi())
+  }, []);
 
-    <ToastContainer
-    position="top-center"
-    autoClose={5000}
-    hideProgressBar
-    newestOnTop={false}
-    closeOnClick
-    rtl={false}
-    pauseOnVisibilityChange
-    draggable
-    pauseOnHover
-    />
-  </div>
+  return (
+    <AuthContext.Provider value={user}>
+      {
+        !user ?
+        <div>
+          <SignInSingUp/>
+        </div> :
+        <h1>
+          estas logeado
+        </h1>
+      }
 
+      <ToastContainer
+      position="top-center"
+      autoClose={2000}
+      hideProgressBar
+      newestOnTop={false}
+      closeOnClick
+      rtl={false}
+      pauseOnVisibilityChange
+      draggable
+      pauseOnHover
+      />
+    </AuthContext.Provider>
+  );
 }
