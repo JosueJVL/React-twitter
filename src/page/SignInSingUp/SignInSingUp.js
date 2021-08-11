@@ -4,8 +4,9 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faUser, faComment  } from '@fortawesome/free-solid-svg-icons';
 import BasicModal from "../../components/Modal/BasicModal";
 import SignUpForm from "../../components/SignUpForm";
-import LogoWhite from "../../assets/png/logo-white.png";
-import LogoTwitter from "../../assets/png/logo.png";
+
+import twitterFondo from "../../assets/png/fondo.png";
+import LogoTwitter from "../../assets/png/twitterA.png";
 
 import "./SignInSingUp.scss"
 
@@ -38,8 +39,8 @@ export default function SignInSingUp() {
 function LeftComponent(){
     return (
         <Col className="signin-signup__left" xs={6}>
-            <img src={LogoTwitter} alt="Twitter"></img>
-            <div>
+            <img src={twitterFondo} alt="Twitter"></img>
+            {/* <div>
                 <h2>
                     <FontAwesomeIcon icon={ faSearch } />
                     Sigue 
@@ -51,7 +52,7 @@ function LeftComponent(){
                     <FontAwesomeIcon icon={ faComment } /> 
                     - Unete a nuestra conversacion
                 </h2>
-            </div>
+            </div> */}
         </Col>
     )
 }
@@ -61,9 +62,9 @@ function RightComponent(props){
     return (
         <Col className="signin-signup__right" xs={6}>
             <div>
-                <img src={LogoWhite} alt="Twitter" />
+                <img src={LogoTwitter} alt="Twitter" />
                 <h2>Mira lo que esta pasando en el Mundo</h2>
-                <h3>Unete a Twitter ahora !</h3>
+                <h3>Únete a Twitter hoy mismo.</h3>
                 <Button 
                     variant="primary"
                     onClick = {() => openModal(
@@ -77,7 +78,8 @@ function RightComponent(props){
                     onClick = {() => openModal(
                         <h2>Formularion de Login</h2>
                     )}
-                    >Iniciar Sesion</Button>
+                    >Iniciar Sesion
+                </Button>
             </div>
         </Col>
     )

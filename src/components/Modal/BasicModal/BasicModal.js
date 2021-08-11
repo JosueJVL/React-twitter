@@ -1,6 +1,6 @@
 import React from 'react';
 import {Modal} from 'react-bootstrap'
-import LogoWhite from "../../../assets/png/logo-white.png";
+import logoTwitter from "../../../assets/png/twitterA.png";
 
 import "./BasicModal.scss"
 
@@ -15,7 +15,7 @@ export default function BasicaModal(props) {
         >
             <Modal.Header>
                 <Modal.Title>
-                    <img src={LogoWhite} alt="Twitter"></img>
+                    <img src={logoTwitter} alt="Twitter"></img>
                 </Modal.Title>
             </Modal.Header> 
             <Modal.Body>{children}</Modal.Body>

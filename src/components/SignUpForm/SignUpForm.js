@@ -1,18 +1,19 @@
-import React, { isValidElement, useState } from 'react';
+import React, { useState } from 'react';
 import { Row, Col, Form, Button, Spinner } from "react-bootstrap";
 import { values, size } from "lodash";
 import { toast } from "react-toastify";
 import { isEmailValid } from '../../utils/validation';
+import  { signUpApi } from '../../api/auth'
 
 import "./SignUpForm.scss";
 
 export default function SignUpForm(props) {
     const { setShowModal } = props;
     const [formData, setFormData] = useState(initialFormValue)
+    const [signUpLoading, setstateSignUpLoading] = useState(false)
 
     const onSubmit = e => {
         e.preventDefault();
-        console.log(formData)
 
         let validCount = 0;
 
@@ -30,7 +31,22 @@ export default function SignUpForm(props) {
             }else if(size(formData.password) < 6){
                 toast.warning("La constraseña debe de tener al menos 6 caracteres")
             }else{
-                toast.success("Ok")
+                setstateSignUpLoading(true);
+                signUpApi(formData).then(response =>{
+                    if(response.code){
+                        toast.warning(response.message);
+                    }else{
+                        toast.success("Se a regitrado correctamente.")
+                        setShowModal(false)
+                        setFormData(initialFormValue())
+                    }
+                })
+                .catch(() => {
+                    toast.error("Error del servidor, intentelo mas tarde.");
+                })
+                .finally(() => {
+                    setstateSignUpLoading(false);
+                });
             }
         }
     };
@@ -52,6 +68,7 @@ export default function SignUpForm(props) {
                                 placeholder="Nombre"
                                 name="nombre"
                                 defaultValue={formData.nombre}
+                                autoComplete="off"
                                 // onChange={e =>
                                 //     setFormData({ ...formData, nombre: e.target.value})}
                             />
@@ -62,6 +79,7 @@ export default function SignUpForm(props) {
                                 placeholder="Apellidos"
                                 name="apellidos"
                                 defaultValue={formData.apellidos}
+                                autoComplete="off"
                             />
                         </Col>
                     </Row>
@@ -72,6 +90,7 @@ export default function SignUpForm(props) {
                         placeholder="Correo electronico"
                         name="email"
                         defaultValue={formData.email}
+                        autoComplete="off"
                     />
                 </Form.Group>
                 <Form.Group>
@@ -96,7 +115,11 @@ export default function SignUpForm(props) {
                 </Form.Group>
 
                 <Button variant="primary" type="submit">
-                     Registrase
+                    {!signUpLoading ? 
+                    "Registrate"
+                    :
+                    <Spinner animation="border"></Spinner>
+                    }
                 </Button>
             </Form>
         </div>
