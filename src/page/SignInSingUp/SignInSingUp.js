@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSearch, faUser, faComment  } from '@fortawesome/free-solid-svg-icons';
 import BasicModal from "../../components/Modal/BasicModal";
 import SignUpForm from "../../components/SignUpForm";
+import SignInForm from "../../components/SignInForm";
 
 import twitterFondo from "../../assets/png/fondo.png";
 import LogoTwitter from "../../assets/png/twitterA.png";
@@ -76,7 +77,7 @@ function RightComponent(props){
                 <Button 
                     variant="outline-primary"
                     onClick = {() => openModal(
-                        <h2>Formularion de Login</h2>
+                        <h2><SignInForm></SignInForm></h2>
                     )}
                     >Iniciar Sesion
                 </Button>
