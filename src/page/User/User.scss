@@ -1,5 +1,14 @@
 @import "../../scss/idex.scss";
 
 .user {
-    
+    &__title{
+        border-bottom: 5px solid $border-grey;
+        padding: 15px;
+    }
+
+    h2{
+        font-size: 22px;
+        margin-bottom: 0;
+        font-weight: bold;
+    }
 }
