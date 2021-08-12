@@ -43,7 +43,7 @@ export default function SignInSingUp(props) {
 
 function LeftComponent(){
     return (
-        <Col className="signin-signup__left" xs={6}>
+        <Col className="signin-signup__left" xs={6} md={6}>
             <img src={twitterFondo} alt="Twitter"></img>
             {/* <div>
                 <h2>

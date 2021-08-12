@@ -90,7 +90,7 @@ export default function SignUpForm(props) {
                         placeholder="Correo electronico"
                         name="email"
                         defaultValue={formData.email}
-                        autoComplete
+                        autoComplete="off"
                     />
                 </Form.Group>
                 <Form.Group>
