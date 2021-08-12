@@ -3,6 +3,7 @@ import SignInSingUp from "./page/SignInSingUp";
 import { ToastContainer } from "react-toastify";
 import { AuthContext } from "./utils/context";
 import {isUserLogedApi} from "./api/auth";
+import Routing from "./routes/routing";
 
 export default function App() {
 
@@ -33,7 +34,7 @@ export default function App() {
           <SignInSingUp setRefreshCheckLogin={setRefreshCheckLogin}/>
         </div> :
         <h1>
-          estas logeado
+          <Routing/>
         </h1>
       }
 
