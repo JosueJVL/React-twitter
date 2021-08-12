@@ -1,0 +1,18 @@
+@import "../../scss/idex.scss";
+
+.basic-layout{
+    &__menu{
+        padding-right: 0 !important;
+    }
+
+    &__content{
+        height: 100vh;
+        overflow: scroll;
+        padding: 0 !important;
+        border-right: 1px solid $border-grey;
+        &::-webkit-scrollbar{
+            display: none;
+        }
+    }
+    
+}

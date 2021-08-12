@@ -34,7 +34,7 @@ export default function App() {
           <SignInSingUp setRefreshCheckLogin={setRefreshCheckLogin}/>
         </div> :
         <h1>
-          <Routing/>
+          <Routing setRefreshCheckLogin={setRefreshCheckLogin}/>
         </h1>
       }
 
