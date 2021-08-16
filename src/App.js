@@ -16,8 +16,8 @@ export default function App() {
 
   useEffect(() =>{
     setUser(isUserLogedApi());
+    setRefreshCheckLogin(false);
     setLoadUser(true);
-    setRefreshCheckLogin(false)
   }, [refreshCheckLogin]);
 
   if(!loadUser){

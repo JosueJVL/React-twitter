@@ -12,7 +12,7 @@ import "./User.scss";
 function User(props) {
     const {match} = props;
     const [user, setUser] = useState(null)
-    console.log(props)
+
     useEffect(() => {
         getUserApi(match.params.id)
         .then(response => {
@@ -34,12 +34,14 @@ function User(props) {
                     }
                 </h2>
             </div>
-            <BannerAvatar user={user}></BannerAvatar>
+            <BannerAvatar user={user}>
+
+            </BannerAvatar>
                 
             <div>
                 Informacion Usuario
             </div>
-            <div className="user__twittws">
+            <div className="user__tweets">
                 Lista de mensajes
             </div>
         </BasicLayout>

@@ -19,13 +19,13 @@ export default function LeftMenu(props) {
 
     // devuelve el Usuario logeado
     const user = useAuth();
-    console.log(user);
 
     // Cierra la sesion, borrando el TOken del LocalStore
     const logOut = () => {
         logoutApi();
         setRefreshCheckLogin(true);
-    }
+    };
+
     return (
         <div className="left-menu">
             <img className="logo" src={twitterA} alt="twitter"></img>
