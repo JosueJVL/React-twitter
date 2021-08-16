@@ -1,22 +1,41 @@
-import React from 'react'
+import React, {useEffect, useState} from 'react'
 import {Button, Spinner} from 'react-bootstrap';
+import { withRouter } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import BasicLayout from '../../layout/BasicLayout/BasicLayout';
-
+import BannerAvatar from '../../components/User/BannerAvatar/BannerAvatar';
+import { getUserApi } from '../../api/user';
 
 
 import "./User.scss";
 
-export default function User() {
+function User(props) {
+    const {match} = props;
+    const [user, setUser] = useState(null)
+    console.log(props)
+    useEffect(() => {
+        getUserApi(match.params.id)
+        .then(response => {
+            if(!response){
+                toast.error("El usuario no existe");
+            }
+            setUser(response)
+        }).catch(() => {
+            toast.error("El usuario no existe");
+        })
+    }, [match.params])
+
     return (
         <BasicLayout className="user">
             <div className="user__title">
                 <h2>
-                Josue Vicencio Lara
+                    {
+                        user ? `${user.name} ${user.lastName}` : "Usuario anonimo"
+                    }
                 </h2>
             </div>
-            <div>
-                Banner Ususario
-            </div>
+            <BannerAvatar user={user}></BannerAvatar>
+                
             <div>
                 Informacion Usuario
             </div>
@@ -26,3 +45,5 @@ export default function User() {
         </BasicLayout>
     )
 }
+
+export default withRouter(User)
