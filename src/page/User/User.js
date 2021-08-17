@@ -2,6 +2,8 @@ import React, {useEffect, useState} from 'react'
 import {Button, Spinner} from 'react-bootstrap';
 import { withRouter } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import useAuth from '../../hooks/useAuth';
+
 import BasicLayout from '../../layout/BasicLayout/BasicLayout';
 import BannerAvatar from '../../components/User/BannerAvatar/BannerAvatar';
 import { getUserApi } from '../../api/user';
@@ -12,6 +14,7 @@ import "./User.scss";
 function User(props) {
     const {match} = props;
     const [user, setUser] = useState(null)
+    const loggedUser = useAuth()
 
     useEffect(() => {
         getUserApi(match.params.id)
@@ -34,7 +37,7 @@ function User(props) {
                     }
                 </h2>
             </div>
-            <BannerAvatar user={user}>
+            <BannerAvatar user={user} loggedUser={loggedUser}>
 
             </BannerAvatar>
                 
