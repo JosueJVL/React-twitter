@@ -3,6 +3,7 @@ import User from "../page/User";
 import Error404 from "../page/Error404"
 
 
+// eslint-disable-next-line import/no-anonymous-default-export
 export default [
     {
         path: "/:id",
