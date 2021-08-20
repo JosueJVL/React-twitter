@@ -11,6 +11,7 @@ import {
 import { logoutApi } from '../../api/auth';
 import useAuth from '../../hooks/useAuth';
 import twitterA from "../../assets/png/twitterA.png"
+import TweetModal from '../TweetModal';
 
 import "./LeftMenu.scss";
 
@@ -41,7 +42,9 @@ export default function LeftMenu(props) {
             <Link to="" onClick={logOut}>
                 <FontAwesomeIcon icon={faPowerOff} /> Cerrar Sesion 
             </Link>
-            <Button>Twittear</Button>
+            <Button>Twittear
+                <TweetModal />
+            </Button>
         </div>
     )
 }

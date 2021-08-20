@@ -33,10 +33,28 @@
             border-radius: 50px;
             background-color: $primary;
             width: 150px;
+            font-weight: bold;
 
             &:hover{
                 background-color: $primary;
                 opacity: 0.6;
+            }
+
+            &.unfollow{
+                &:hover{
+                    border-color: rgb(244, 33, 46);
+                    background-color: rgba(244, 33, 46, 0.1);
+
+                    &::before{
+                        content: "Dejar de seguir";
+                        color: red;
+                        font-weight: bold;
+                    }
+
+                    span{
+                        display: none;
+                    }
+                }
             }
         }
     }
