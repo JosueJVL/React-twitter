@@ -17,7 +17,7 @@ export default function InfoUser(props) {
             <p className="email"> {user?.email} </p>
             { user?.biography && 
                 <div className="description">
-                    {user?.biography}
+                    <span>{user?.biography}</span>
                 </div>
             }
             <div className="more-info">
