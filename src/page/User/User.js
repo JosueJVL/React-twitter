@@ -38,6 +38,7 @@ function User(props) {
                         user ? `${user.name} ${user.lastName}` : "Usuario anonimo"
                     }
                 </h2>
+                <h1>Welcome !!</h1>
             </div>
             <BannerAvatar user={user} loggedUser={loggedUser} />
                 
