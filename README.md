@@ -95,3 +95,17 @@ Estamos en un ejemplo
     git config --global alias.lg "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
 
     git rebase <rama>
+
+
+    De esta forma se podra agregar varios archivos especificando solo la extension
+    git add *.<extension de archivo>
+    adicionar a eso es bueno especificar el directorio para que sepa en donde estan los archivos que quiere agregar
+    git add js/.*js
+
+    Creando alias
+    Para modifcar el git status seria con este alias
+    git config --global alias.s "status --short"
+
+    git log // se quita la ultima parte de --all para no traer todos las rammas
+    git config --global alias.lg "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+
