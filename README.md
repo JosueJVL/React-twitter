@@ -68,3 +68,34 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/d
 ### `npm run build` fails to minify
 
 This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+
+## Notas
+Estamos en un ejemplo
+    git add . // agrega todos los achivos al Stage
+    git reset . // regresa todos los achivos al area de trabajo
+
+    Si un archivo se elimina por X razon, lo puedes restablecer con el comando 
+    git checkout -- .
+
+    como consejo, si no queremos hacer el pado de "git add ." y luego el "git commit -m 'mensaje'"
+    esta el comando de "am" add/m 
+    git commit -am
+
+    De esta forma se podra agregar varios archivos especificando solo la extension
+    git add *.<extension de archivo>
+    adicionar a eso es bueno especificar el directorio para que sepa en donde estan los archivos que quiere agregar
+    git add js/.*js
+
+    Creando alias
+    Para modifcar el git status seria con este alias
+    git config --global alias.s "status --short"
+
+    git log // se quita la ultima parte de --all para no traer todos las rammas
+    git config --global alias.lg "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(bold yellow)%d%C(reset)' --all"
+
+    Rebase
+    git rebase <rama> para actualizar a la rama que necesitas
+    git rebase -i HEAD~4 para trear los commir y hacer un squash
+    git push --force para hacer el commit y push a la rama y actualizar la historia
+    git rebase --abort cuando se hace el git rebase <rama> yu no deseas continuar se puede hacer el comando de abort
