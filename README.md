@@ -74,3 +74,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 Estamos en un ejemplo
     git add . // agrega todos los achivos al Stage
     git reset . // regresa todos los achivos al area de trabajo
+
+    Si un archivo se elimina por X razon, lo puedes restablecer con el comando 
+    git checkout -- .
+
+    como consejo, si no queremos hacer el pado de "git add ." y luego el "git commit -m 'mensaje'"
+    esta el comando de "am" add/m 
+    git commit -am
